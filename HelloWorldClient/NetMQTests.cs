@@ -14,6 +14,7 @@ namespace HelloWorldClient
     {
         public void Test03()
         {
+            Console.WriteLine("Test03");
             using (var server = new ResponseSocket("@tcp://127.0.0.1:5556"))
             using (var client = new RequestSocket(">tcp://127.0.0.1:5556"))
             {
@@ -23,11 +24,19 @@ namespace HelloWorldClient
                 server.SendFrame("Hi Back");
                 string fromServerMessage = client.ReceiveFrameString();
                 Console.WriteLine("From Server: {0}", fromServerMessage);
-                Console.ReadLine();
+                //Console.ReadLine();
+                //server.Disconnect();
+                //server.Close();
+                //client.Close();
+                
+                //server.wa
             }
+            Console.WriteLine("closing");
+            Thread.Sleep(2000);// wait for spckets to close
         }
         public void Test01()
         {
+            Console.WriteLine("Test01");
             using (var end1 = new PairSocket())
             using (var end2 = new PairSocket())
             {
@@ -47,9 +56,12 @@ namespace HelloWorldClient
                 });
                 Task.WaitAll(new[] { end1Task, end2Task });
             }
+            Console.WriteLine("closing");
+            Thread.Sleep(2000);// wait for spckets to close
         }
         public void Test02()
         {
+            Console.WriteLine("Test02");
             using (var server = new ResponseSocket("@tcp://127.0.0.1:5556"))
             using (var client = new RequestSocket(">tcp://127.0.0.1:5556"))
             {
@@ -76,11 +88,14 @@ namespace HelloWorldClient
                 Console.WriteLine("Client received {0} frames", msg.FrameCount);
                 foreach (var frame in msg)
                     Console.WriteLine("Frame={0}", frame.ConvertToString());
-                Console.ReadLine();
+                //Console.ReadLine();
             }
+            Console.WriteLine("closing");
+            Thread.Sleep(2000);// wait for spckets to close
         }
         public void MultipartMessageTest()
         {
+            Console.WriteLine("MultipartMessageTest");
             using (var server = new ResponseSocket("@tcp://127.0.0.1:5556"))
             using (var client = new RequestSocket(">tcp://127.0.0.1:5556"))
             {
@@ -107,8 +122,10 @@ namespace HelloWorldClient
                 Console.WriteLine("Client received {0} frames", msg.FrameCount);
                 foreach (var frame in msg)
                     Console.WriteLine("Frame={0}", frame.ConvertToString());
-                Console.ReadLine();
+                //Console.ReadLine();
             }
+            Console.WriteLine("closing");
+            Thread.Sleep(2000);// wait for spckets to close
         }
         public void Send(IOutgoingSocket socket, byte[] message, int numBytes, bool doesBlockAllOtherTraffic)
         {
@@ -120,6 +137,7 @@ namespace HelloWorldClient
         }
         public void HugeMessageTest()
         {
+            Console.WriteLine("HugeMessageTest");
             using (var server = new ResponseSocket("@tcp://127.0.0.1:5556"))
             using (var client = new RequestSocket(">tcp://127.0.0.1:5556"))
             {
@@ -153,8 +171,10 @@ namespace HelloWorldClient
                 Console.WriteLine("Client received {0} frames", msg.FrameCount);
                 foreach (var frame in msg)
                     Console.WriteLine("Frame={0}", frame.ConvertToString());
-                Console.ReadLine();
+                //Console.ReadLine();
             }
+            Console.WriteLine("closing");
+            Thread.Sleep(2000);// wait for spckets to close
         }
 
         SubscriberSocket prepSubscriber(string ip, ushort port, int bufferSize)
@@ -169,6 +189,7 @@ namespace HelloWorldClient
         }
         public void MultiBroadcastTest()
         {
+            Console.WriteLine("MultiBroadcastTest");
             Stopwatch sw = new Stopwatch();
             const int MegaBit = 1024;
             const int MegaByte = 1024 * MegaBit;
@@ -209,6 +230,8 @@ namespace HelloWorldClient
 
                 Console.WriteLine("Receive Elapsed={0}", sw.Elapsed);
             }
+            Console.WriteLine("closing");
+            Thread.Sleep(2000);// wait for spckets to close
         }
     }
 }

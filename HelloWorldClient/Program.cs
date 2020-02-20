@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-using NetMQ;
-using NetMQ.Sockets;
+//using NetMQ;
+//using NetMQ.Sockets;
 
 namespace HelloWorldClient
 {
@@ -20,6 +20,7 @@ namespace HelloWorldClient
             Console.WriteLine("Hello World!");
             NetMQTests nmq = new NetMQTests();
 
+            nmq.Test03();
             //nmq.MultiBroadcastTest();
             //nmq.MultipartMessageTest();
             nmq.Test02();
