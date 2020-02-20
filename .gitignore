@@ -5,6 +5,8 @@
 .dll
 **/debug/*
 **/release/*
+/.vs
+/.idea
 
 *.dll
 *.dll
