@@ -6,5 +6,7 @@
 .ide-wal
 **/debug/*
 **/release/*
+/.vs
+/.idea
 
 
